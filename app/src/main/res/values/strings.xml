@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Logoped</string>
+    <string name="action_settings">Oprire test</string>
+    <string name="lbl_wrong">Gresit</string>
+    <string name="lbl_right">Corect</string>
+    <string name="lbl_report">Raport</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="action_send_report">Trimite raport pe email</string>
+
+    <string name="error_invalid_email">Adresa de email invalida</string>
+    <string name="error_field_required">Camp incorect</string>
+    <string name="lbl_choose_error_type_title">Alegeti tipul greselii:</string>
+    <string name="lbl_are_you_sure_you_want_to_exit">Sunteti sigur ca vreti sa opriti testul?</string>
+    <string name="lbl_are_you_sure_close_app">SSunteti sigur ca vreti sa opriti aplicatia?</string>
+    <string name="lbl_yes">Da</string>
+    <string name="lbl_no">Nu</string>
+    <string name="lbl_start_test">Incepere Test</string>
+    <string name="lbl_close_app">Inchidere Aplicatie</string>
+    <string name="lbl_greseli_initiale">Greseli initiale:</string>
+    <string name="lbl_raspunsuri_corecte">Raspunsuri corecte:</string>
+    <string name="lbl_greseli_mediane">Greseli mediane:</string>
+    <string name="lbl_greseli_finale">Greseli finale:</string>
+    <string name="lbl_consoane">Consoane</string>
+    <string name="lbl_dupa_mod_producere">Dupa modul de producere:</string>
+    <string name="lbl_oclusive">Oclusive:</string>
+    <string name="lbl_fricative">Fricative:</string>
+    <string name="lbl_africate">Africate:</string>
+    <string name="lbl_nazale">Nazale:</string>
+    <string name="lbl_sonante">Sonante:</string>
+    <string name="lbl_dupa_mod_articulare">Dupa locul de articulare:</string>
+    <string name="lbl_bilabiale">Bilabiale:</string>
+    <string name="lbl_labiodentale">Labiodentale:</string>
+    <string name="lbl_apicodentale">Apico-dentale:</string>
+    <string name="lbl_alveolare">Alveolare:</string>
+    <string name="lbl_palatale">Palatale:</string>
+    <string name="lbl_velare">Velare:</string>
+    <string name="lbl_laringale">Laringale:</string>
+    <string name="lbl_vocale">Vocale</string>
+    <string name="lbl_dupa_zona_articulare">Dupa zona de articulare</string>
+    <string name="lbl_anterioare">Anterioare:</string>
+    <string name="lbl_mediane">Mediane:</string>
+    <string name="lbl_posterioare">Posterioare:</string>
+    <string name="lbl_dupa_grad_deschidere_cavitate_bucala">Dupa gradul de deschidere a cavitatii bucale</string>
+    <string name="lbl_deschise">Deschise:</string>
+    <string name="lbl_semideschise">Semideschise:</string>
+    <string name="lbl_inchise">Inchise:</string>
+    <string name="lbl_dupa_rotunjire_buze">Dupa rotunjirea buzelor</string>
+    <string name="lbl_rotunjite">Rotunjite (labiale):</string>
+    <string name="lbl_nerotunjite">Nerotunjite (nelabiale):</string>
+    <string name="lbl_placeholder">-</string>
+    <string name="lbl_nume_pacient">Nume pacient</string>
+    <string name="lbl_no_internet_connection">Nu sunteti conectat la internet!</string>
+
+</resources>
