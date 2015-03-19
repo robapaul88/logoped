@@ -29,6 +29,7 @@ public class Word implements Parcelable {
         id = in.readLong();
         name = in.readString();
         imageName = in.readString();
+        audioName = in.readString();
         fonem = in.readString();
         answerType = in.readInt();
     }
@@ -43,6 +44,7 @@ public class Word implements Parcelable {
         dest.writeLong(id);
         dest.writeString(name);
         dest.writeString(imageName);
+        dest.writeString(audioName);
         dest.writeString(fonem);
         dest.writeInt(answerType);
     }
@@ -70,9 +72,30 @@ public class Word implements Parcelable {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Word{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", imageName='" + imageName + '\'' +
+                ", audioName='" + audioName + '\'' +
+                ", fonem='" + fonem + '\'' +
+                ", answerType=" + answerType +
+                '}';
+    }
+
+    public Word(String name, String imageName, String audioName, String fonem, Integer answerType) {
+        this.name = name;
+        this.imageName = imageName;
+        this.audioName = audioName;
+        this.fonem = fonem;
+        this.answerType = answerType;
+    }
+
     private Long id;
     private String name;
     private String imageName;
+    private String audioName;
     private String fonem;
     private Integer answerType;
 
@@ -83,23 +106,11 @@ public class Word implements Parcelable {
         this.id = id;
     }
 
-    public Word(Long id, String name, String imageName, String fonem, Integer answerType) {
+    public Word(Long id, String name, String imageName, String audioName, String fonem, Integer answerType) {
         this.id = id;
         this.name = name;
         this.imageName = imageName;
-        this.fonem = fonem;
-        this.answerType = answerType;
-    }
-
-    public Word(String name, String imageName, String fonem) {
-        this.name = name;
-        this.imageName = imageName;
-        this.fonem = fonem;
-    }
-
-    public Word(String name, String imageName, String fonem, Integer answerType) {
-        this.name = name;
-        this.imageName = imageName;
+        this.audioName = audioName;
         this.fonem = fonem;
         this.answerType = answerType;
     }
@@ -128,6 +139,14 @@ public class Word implements Parcelable {
         this.imageName = imageName;
     }
 
+    public String getAudioName() {
+        return audioName;
+    }
+
+    public void setAudioName(String audioName) {
+        this.audioName = audioName;
+    }
+
     public String getFonem() {
         return fonem;
     }
@@ -144,14 +163,4 @@ public class Word implements Parcelable {
         this.answerType = answerType;
     }
 
-    @Override
-    public String toString() {
-        return "Word{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", imageName='" + imageName + '\'' +
-                ", fonem='" + fonem + '\'' +
-                ", answerType=" + answerType +
-                '}';
-    }
 }

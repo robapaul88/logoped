@@ -30,7 +30,7 @@ public class ImageUtils {
         return bitmap;
     }
 
-    public static int getResIdByName(Context context, String name) {
+    public static int getImageResIdByName(Context context, String name) {
         Log.d(TAG, "Searching for: " + name);
         if (name != null && name.length() > IMAGE_EXTENSION_LENGTH) {
             return context.getResources().getIdentifier(name.substring(0, name.length() - IMAGE_EXTENSION_LENGTH), "drawable", context.getPackageName());
