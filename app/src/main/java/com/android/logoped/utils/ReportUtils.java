@@ -8,7 +8,7 @@ public class ReportUtils {
     public enum ConsoaneProducere {
         OCLUSIVE("p", "b", "t", "d", "c", "g"),
         FRICATIVE("s", "z", "ş", "j", "f", "v", "h"),
-        AFRICATE("ţ", "č", "ğ"),
+        AFRICATE("ţ", "ci", "ce", "gi", "ge"),
         NAZALE("m", "n"),
         SONANTE("r", "l", "m", "n");
 
@@ -33,7 +33,7 @@ public class ReportUtils {
         LABIODENTALE("f", "v"),
         APICO_DENTALE("t", "d", "n", "s", "z", "ţ", "r", "l"),
         ALVEOLARE("ş", "j"),
-        PALATALE("č", "ğ"),
+        PALATALE("ci", "ce", "gi", "ge"),
         VELARE("c", "g"),
         LARINGALE("h");
 
@@ -55,7 +55,7 @@ public class ReportUtils {
 
     public enum VocaleArticulare {
         ANTERIOARE("e", "i"),
-        MEDIANE("a", "ă", "î"),
+        MEDIANE("a", "ă", "î", "â"),
         POSTERIOARE("o", "u");
 
         public String[] mItems;
@@ -77,7 +77,7 @@ public class ReportUtils {
     public enum VocaleDeschidereCavitateBucala {
         DESCHISE("a"),
         SEMIDESCHISE("e", "ă", "o"),
-        INCHISE("i", "î", "u");
+        INCHISE("i", "î", "u", "â");
 
         public String[] mItems;
 
@@ -97,7 +97,7 @@ public class ReportUtils {
 
     public enum VocaleParticipareBuze {
         ROTUNJITE("o", "u"),
-        NEROTUNJITE("e", "i", "a", "ă", "î");
+        NEROTUNJITE("e", "i", "a", "ă", "î", "â");
 
         public String[] mItems;
 
