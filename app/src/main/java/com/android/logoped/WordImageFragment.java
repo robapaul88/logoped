@@ -5,8 +5,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,16 +66,19 @@ public class WordImageFragment extends Fragment {
             mBitmapTask.execute(ImageUtils.getResIdByName(getActivity(), mDisplayedWord.getImageName()));
             mTextView = (TextView) rootView.findViewById(R.id.word_name_tv);
             String wordName = mDisplayedWord.getName();
-            String fonem = mDisplayedWord.getFonem();
-            if (wordName != null && fonem != null) {
-                int indexOfFonem = wordName.indexOf(fonem);
-                if (indexOfFonem != -1) {
-                    Spannable spannableWordName = new SpannableString(mDisplayedWord.getName());
-                    spannableWordName.setSpan(new UnderlineSpan(), indexOfFonem, indexOfFonem + fonem.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-                    mTextView.setText(spannableWordName, TextView.BufferType.SPANNABLE);
-                } else {
-                    mTextView.setText(mDisplayedWord.getName());
-                }
+//            String fonem = mDisplayedWord.getFonem();
+//            if (wordName != null && fonem != null) {
+//                int indexOfFonem = wordName.indexOf(fonem);
+//                if (indexOfFonem != -1) {
+//                    Spannable spannableWordName = new SpannableString(mDisplayedWord.getName());
+//                    spannableWordName.setSpan(new UnderlineSpan(), indexOfFonem, indexOfFonem + fonem.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+//                    mTextView.setText(spannableWordName, TextView.BufferType.SPANNABLE);
+//                } else {
+//                    mTextView.setText(mDisplayedWord.getName());
+//                }
+//            }
+            if (!TextUtils.isEmpty(wordName)) {
+                mTextView.setText(Html.fromHtml(wordName));
             }
         }
         return rootView;

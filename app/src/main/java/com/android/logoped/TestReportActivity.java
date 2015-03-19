@@ -142,15 +142,15 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
                         answeredCorrectly++;
                         break;
 
-                    case Word.ANSWERED_WRONG_FIRST_PART_ID:
+                    case Word.ANSWERED_OMIS_ID:
                         wrongFirstPart++;
                         break;
 
-                    case Word.ANSWERED_WRONG_MIDDLE_ID:
+                    case Word.ANSWERED_DISTORSIONAT_ID:
                         wrongMiddle++;
                         break;
 
-                    case Word.ANSWERED_WRONG_LAST_PART_ID:
+                    case Word.ANSWERED_INLOCUIT_ID:
                         wrongEnd++;
                         break;
                 }
@@ -306,11 +306,11 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
             mReportData[0] = " " + answeredCorrectly + " / " + answeredSize + " = " + String.format("%.2f", fullPercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_raspunsuri_corecte)).append(mReportData[0]).append("\n");
             mReportData[1] = " " + wrongFirstPart + " / " + answeredSize + " = " + String.format("%.2f", fullAnterioarePercentage) + "%";
-            mEmailBodyStringBuilder.append(getString(R.string.lbl_greseli_initiale)).append(mReportData[1]).append("\n");
+            mEmailBodyStringBuilder.append(getString(R.string.lbl_sunete_omise)).append(mReportData[1]).append("\n");
             mReportData[2] = " " + wrongMiddle + " / " + answeredSize + " = " + String.format("%.2f", fullMedianePercentage) + "%";
-            mEmailBodyStringBuilder.append(getString(R.string.lbl_greseli_mediane)).append(mReportData[2]).append("\n");
+            mEmailBodyStringBuilder.append(getString(R.string.lbl_sunete_distorsionate)).append(mReportData[2]).append("\n");
             mReportData[3] = " " + wrongEnd + " / " + answeredSize + " = " + String.format("%.2f", fullPosterioarePercentage) + "%";
-            mEmailBodyStringBuilder.append(getString(R.string.lbl_greseli_finale)).append(mReportData[3]).append("\n");
+            mEmailBodyStringBuilder.append(getString(R.string.lbl_sunete_inlocuite)).append(mReportData[3]).append("\n");
             mEmailBodyStringBuilder.append("\n").append(getString(R.string.lbl_consoane)).append("\n").append("\n");
             mEmailBodyStringBuilder.append(getString(R.string.lbl_dupa_mod_producere)).append("\n");
             mReportData[4] = " " + mCorectConsoaneOclusive + " / " + mNbConsoaneOclusive + " = " + String.format("%.2f", cOclusivePercentage) + "%";

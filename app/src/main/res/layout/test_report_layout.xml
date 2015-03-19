@@ -87,7 +87,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:text="@string/lbl_greseli_initiale"
+                    android:text="@string/lbl_sunete_omise"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:text="@string/lbl_greseli_mediane"
+                    android:text="@string/lbl_sunete_distorsionate"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:text="@string/lbl_greseli_finale"
+                    android:text="@string/lbl_sunete_inlocuite"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"

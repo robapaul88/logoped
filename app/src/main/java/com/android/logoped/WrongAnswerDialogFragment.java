@@ -22,9 +22,9 @@ public class WrongAnswerDialogFragment extends DialogFragment implements
     }
 
     private enum WordPronunciationError {
-        POZITIE_INITIALA("Greseala pe pozitie initiala"),
-        POZITIE_MEDIANA("Greseala pe pozitie mediana"),
-        POZITIE_FINALA("Greseala pe pozitie finala");
+        POZITIE_INITIALA("Sunet omis"),
+        POZITIE_MEDIANA("Sunet distorsionat"),
+        POZITIE_FINALA("Sunet inlocuit");
 
         private String mMessage;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Logoped</string>
+    <string name="app_name">Paşi prin lumea sunetelor!</string>
     <string name="action_settings">Oprire test</string>
     <string name="lbl_wrong">Gresit</string>
     <string name="lbl_right">Corect</string>
@@ -15,15 +15,15 @@
     <string name="error_field_required">Camp incorect</string>
     <string name="lbl_choose_error_type_title">Alegeti tipul greselii:</string>
     <string name="lbl_are_you_sure_you_want_to_exit">Sunteti sigur ca vreti sa opriti testul?</string>
-    <string name="lbl_are_you_sure_close_app">SSunteti sigur ca vreti sa opriti aplicatia?</string>
+    <string name="lbl_are_you_sure_close_app">Sunteti sigur ca vreti sa opriti aplicatia?</string>
     <string name="lbl_yes">Da</string>
     <string name="lbl_no">Nu</string>
     <string name="lbl_start_test">Incepere Test</string>
     <string name="lbl_close_app">Inchidere Aplicatie</string>
-    <string name="lbl_greseli_initiale">Greseli initiale:</string>
     <string name="lbl_raspunsuri_corecte">Raspunsuri corecte:</string>
-    <string name="lbl_greseli_mediane">Greseli mediane:</string>
-    <string name="lbl_greseli_finale">Greseli finale:</string>
+    <string name="lbl_sunete_omise">Sunete omise:</string>
+    <string name="lbl_sunete_distorsionate">Sunete distorsionate:</string>
+    <string name="lbl_sunete_inlocuite">Sunete inlocuite:</string>
     <string name="lbl_consoane">Consoane</string>
     <string name="lbl_dupa_mod_producere">Dupa modul de producere:</string>
     <string name="lbl_oclusive">Oclusive:</string>
@@ -52,7 +52,7 @@
     <string name="lbl_rotunjite">Rotunjite (labiale):</string>
     <string name="lbl_nerotunjite">Nerotunjite (nelabiale):</string>
     <string name="lbl_placeholder">-</string>
-    <string name="lbl_nume_pacient">Nume pacient</string>
+    <string name="lbl_nume_pacient">Nume</string>
     <string name="lbl_no_internet_connection">Nu sunteti conectat la internet!</string>
 
 </resources>

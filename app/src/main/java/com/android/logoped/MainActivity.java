@@ -20,7 +20,7 @@ import com.android.logoped.model.Word;
 
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity implements OnAnswerSelectedListener, View.OnClickListener, View.OnTouchListener, WrongAnswerDialogFragment.WrongAnswerTypeListener {
+public class MainActivity extends ActionBarActivity implements OnAnswerSelectedListener, View.OnClickListener, WrongAnswerDialogFragment.WrongAnswerTypeListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -36,11 +36,8 @@ public class MainActivity extends ActionBarActivity implements OnAnswerSelectedL
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), mWords);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setOnTouchListener(this);
-        Button mWrongAnswerBtn = (Button) findViewById(R.id.btn_wrong);
-        mWrongAnswerBtn.setOnClickListener(this);
-        Button mRightAnswerBtn = (Button) findViewById(R.id.btn_right);
-        mRightAnswerBtn.setOnClickListener(this);
+        findViewById(R.id.btn_wrong).setOnClickListener(this);
+        findViewById(R.id.btn_right).setOnClickListener(this);
 
     }
 
@@ -115,12 +112,6 @@ public class MainActivity extends ActionBarActivity implements OnAnswerSelectedL
                 break;
         }
     }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return true;//swallow swipe
-    }
-
 
     @Override
     public void onWrongAnswerSelected(int position) {

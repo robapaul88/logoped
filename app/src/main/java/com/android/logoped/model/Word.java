@@ -11,9 +11,9 @@ import android.os.Parcelable;
 public class Word implements Parcelable {
     public static final int UNANSWERED_ID = -2;
     public static final int ANSWERED_CORRECTLY_ID = -1;
-    public static final int ANSWERED_WRONG_FIRST_PART_ID = 0;
-    public static final int ANSWERED_WRONG_MIDDLE_ID = 1;
-    public static final int ANSWERED_WRONG_LAST_PART_ID = 2;
+    public static final int ANSWERED_OMIS_ID = 0;
+    public static final int ANSWERED_DISTORSIONAT_ID = 1;
+    public static final int ANSWERED_INLOCUIT_ID = 2;
     public static final Parcelable.Creator<Word> CREATOR
             = new Parcelable.Creator<Word>() {
         public Word createFromParcel(Parcel in) {
@@ -50,9 +50,9 @@ public class Word implements Parcelable {
     public enum AnswerType {
         UNANSWERED(UNANSWERED_ID),
         ANSWERED_CORRECTLY(ANSWERED_CORRECTLY_ID),
-        ANSWERED_WRONG_FIRST_PART(ANSWERED_WRONG_FIRST_PART_ID),
-        ANSWERED_WRONG_MIDDLE(ANSWERED_WRONG_MIDDLE_ID),
-        ANSWERED_WRONG_LAST_PART(ANSWERED_WRONG_LAST_PART_ID);
+        ANSWERED_WRONG_OMIS(ANSWERED_OMIS_ID),
+        ANSWERED_WRONG_DISTORSIONAT(ANSWERED_DISTORSIONAT_ID),
+        ANSWERED_WRONG_INLOCUIT(ANSWERED_INLOCUIT_ID);
 
         public int mCode;
 

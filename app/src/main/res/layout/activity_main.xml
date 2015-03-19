@@ -16,22 +16,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_wrong"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
+            android:scaleType="centerInside"
             android:layout_weight="0.5"
-            android:text="@string/lbl_wrong" />
+            android:src="@drawable/wrong" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_right"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="5dp"
+            android:src="@drawable/right"
+            android:scaleType="centerInside"
             android:layout_marginStart="5dp"
-            android:layout_weight="0.5"
-            android:text="@string/lbl_right" />
+            android:layout_weight="0.5" />
     </LinearLayout>
 </LinearLayout>
