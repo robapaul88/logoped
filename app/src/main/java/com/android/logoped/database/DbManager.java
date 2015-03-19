@@ -45,9 +45,7 @@ public class DbManager {
     }
 
     public boolean resetSavedAnswers() {
-        WordsRepo.clearWords(mContext);
-        insertWords(DbInitializer.getWordsList());
-        return true;
+        return WordsRepo.resetSavedWords(mContext);
     }
 
     public List<Word> getAllAnsweredWords() {

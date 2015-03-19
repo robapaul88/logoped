@@ -20,6 +20,7 @@
     <string name="lbl_no">Nu</string>
     <string name="lbl_start_test">Incepere Test</string>
     <string name="lbl_close_app">Inchidere Aplicatie</string>
+    <string name="lbl_inchidere">Inchidere</string>
     <string name="lbl_raspunsuri_corecte">Raspunsuri corecte:</string>
     <string name="lbl_sunete_omise">Sunete omise:</string>
     <string name="lbl_sunete_distorsionate">Sunete distorsionate:</string>
@@ -54,5 +55,6 @@
     <string name="lbl_placeholder">-</string>
     <string name="lbl_nume_pacient">Nume</string>
     <string name="lbl_no_internet_connection">Nu sunteti conectat la internet!</string>
-
+    <string name="lbl_descriere_aplicatie">\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Aplicaţia „Paşi prin lumea sunetelor!” este un material elaborat de conf. univ. dr. Carolina Bodea Haţegan şi lect. asociat dr. Dorina Talaş,  Departamentul de Psihopedagogie specială, Facultatea de Psihologie şi Ştiinţe ale Educaţiei, Universitatea Babeş-Bolyai, cu sprijinul Cochlear şi ASTTLR.\n\n\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Aceasta este un material util atât specialiştilor în terapia tulburărilor de limbaj, cât şi părinţilor preocupaţi de modalităţi prin care pot contribui la dezvoltarea abilităţilor de pronunţie a propriilor copii.\n\n\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Materialul imagistic şi lingvistic cuprins în această aplicaţie este structurat şi organizat după criterii logopedice. Astfel, fiecare sunet din inventarul limbii române este localizat la nivelul cuvintelor, în cele trei poziţii de bază: poziţie iniţială, poziţie mediană şi poziţie finală. Excepţie de la această regulă o face repartizarea sunetului „ă” doar la nivelul a două cuvinte unde sunetul se află în poziţie mediană şi finală, precum şi a sunetului „î” care este localizat doar în poziţie iniţială şi mediană.\n\n\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Astfel, aplicaţia reuneşte o colecţie de 79 de cuvinte şi imagini care permit evaluarea abilităţilor articulatorii ale copilului, precum şi notarea pronunţiei corecte, omisiunii, distorsiunii sau substituirii/înlocuirii sunetului ţintă. Terapeutul sau părintele rulează aplicaţia alături de copil şi înregistrează răspunsurile copilului (corecte sau greşite). Aplicaţia oferă şi posibilitatea de a asculta înregistrarea sonoră a cuvântului reprezentat în imagine.  Rezultatele sunt condensate într-un tabel care redă în procente, în funcţie de diferite categorii clasificatorii ale sunetelor din limba română, performanţa copilului. Aceste rezultate pot fi trimise pe o adresă de e-mail ceea ce face posibilă reevaluarea şi compararea rezultatelor obţinute la diferite intervale de timp.\n\n\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Autorii aplicaţiei adresează mulţumiri d-nei Raluca Trifu, d-şoarei Ştefana Berenghia şi firmei Web &amp; IT Solutions Provider pentru implicarea acestora în finalizarea acestui material.</string>
+    <string name="lbl_prezentare_aplicatie">Prezentare aplicatie</string>
 </resources>

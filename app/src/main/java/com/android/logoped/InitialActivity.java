@@ -1,6 +1,7 @@
 package com.android.logoped;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,10 +37,9 @@ public class InitialActivity extends ActionBarActivity implements View.OnClickLi
 
         //makeTheLicenceCheck();
 
-        Button mStartTestBtn = (Button) findViewById(R.id.btn_start_test);
-        mStartTestBtn.setOnClickListener(this);
-        Button mCloseAppBtn = (Button) findViewById(R.id.btn_close_app);
-        mCloseAppBtn.setOnClickListener(this);
+        findViewById(R.id.btn_start_test).setOnClickListener(this);
+        findViewById(R.id.btn_close_app).setOnClickListener(this);
+        findViewById(R.id.btn_about).setOnClickListener(this);
     }
 
     @Override
@@ -62,7 +62,16 @@ public class InitialActivity extends ActionBarActivity implements View.OnClickLi
                     }
                 }).setNegativeButton(getString(R.string.lbl_no), null).create().show();
                 break;
+            case R.id.btn_about:
+                openAboutDialog();
+                break;
         }
+    }
+
+    private void openAboutDialog() {
+        FragmentManager manager = getFragmentManager();
+        AboutDialogFragment dialog = new AboutDialogFragment();
+        dialog.show(manager, AboutDialogFragment.class.getSimpleName());
     }
 
     private boolean makeTheLicenceCheck() {

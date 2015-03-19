@@ -27,4 +27,12 @@
         android:layout_margin="20dp"
         android:padding="20dp"
         android:text="@string/lbl_close_app" />
+
+    <Button
+        android:id="@+id/btn_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:text="@string/lbl_prezentare_aplicatie" />
 </LinearLayout>

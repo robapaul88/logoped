@@ -28,6 +28,17 @@ public class WordsRepo {
         return getWordsDao(context).queryBuilder().where(WordDao.Properties.AnswerType.notEq(String.valueOf(Word.UNANSWERED_ID))).list();
     }
 
+    public static boolean resetSavedWords(Context context) {
+        List<Word> words = getAllWords(context);
+        if (words != null && words.size() > 0) {
+            for (Word word : words) {
+                word.setAnswerType(Word.UNANSWERED_ID);
+                insertOrUpdate(context, word);
+            }
+        }
+        return true;
+    }
+
     private static WordDao getWordsDao(Context c) {
         return ((LogopedApplication) c.getApplicationContext()).getDaoSession().getWordDao();
     }
