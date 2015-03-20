@@ -1,5 +1,6 @@
 package com.android.logoped;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -25,6 +26,12 @@ import com.android.logoped.utils.ImageUtils;
  */
 public class WordImageFragment extends Fragment implements View.OnClickListener {
 
+    public interface OnArrowPressListener {
+        public void onLeftArrowPressed();
+
+        public void onRightArrowPressed();
+    }
+
     private static final String EXTRA_WORD_TO_DISPLAY = "EXTRA_WORD_TO_DISPLAY";
     private static final String TAG = WordImageFragment.class.getSimpleName();
 
@@ -32,6 +39,7 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     private TextView mTextView;
     private Word mDisplayedWord;
     private BitmapWorkerTask mBitmapTask;
+    private OnArrowPressListener mListener;
 
     public static WordImageFragment newInstance(Word word) {
         WordImageFragment fragment = new WordImageFragment();
@@ -42,6 +50,12 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     }
 
     public WordImageFragment() {
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mListener = (OnArrowPressListener) activity;
     }
 
     @Override
@@ -67,7 +81,9 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
                 mTextView.setText(Html.fromHtml(wordName));
             }
         }
-        mImageView.setOnClickListener(this);
+        rootView.findViewById(R.id.main_frame).setOnClickListener(this);
+        rootView.findViewById(R.id.arrow_left).setOnClickListener(this);
+        rootView.findViewById(R.id.arrow_right).setOnClickListener(this);
         return rootView;
     }
 
@@ -86,21 +102,27 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.imv_image) {
-            Log.d(TAG, "Playing sound:" + mDisplayedWord.getAudioName());
-            int soundId = AudioUtils.getRawResIdByName(getActivity(), mDisplayedWord.getAudioName());
-            if (soundId != 0) {
-                Log.d(TAG, "Actually playing sound!");
-                final MediaPlayer mp = MediaPlayer.create(getActivity(), soundId);
-                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        mp.release();
-                    }
+        switch (v.getId()) {
+            case R.id.main_frame:
+                int soundId = AudioUtils.getRawResIdByName(getActivity(), mDisplayedWord.getAudioName());
+                if (soundId != 0) {
+                    final MediaPlayer mp = MediaPlayer.create(getActivity(), soundId);
+                    mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
 
-                });
-                mp.start();
-            }
+                    });
+                    mp.start();
+                }
+                break;
+            case R.id.arrow_left:
+                mListener.onLeftArrowPressed();
+                break;
+            case R.id.arrow_right:
+                mListener.onRightArrowPressed();
+                break;
         }
     }
 }

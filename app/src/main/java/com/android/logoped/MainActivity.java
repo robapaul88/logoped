@@ -20,7 +20,7 @@ import com.android.logoped.model.Word;
 
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity implements OnAnswerSelectedListener, View.OnClickListener, WrongAnswerDialogFragment.WrongAnswerTypeListener {
+public class MainActivity extends ActionBarActivity implements OnAnswerSelectedListener, View.OnClickListener, WrongAnswerDialogFragment.WrongAnswerTypeListener, WordImageFragment.OnArrowPressListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -118,6 +118,18 @@ public class MainActivity extends ActionBarActivity implements OnAnswerSelectedL
         Word word = mWords.get(mViewPager.getCurrentItem());
         word.setAnswerType(Word.AnswerType.getByCode(position).mCode);
         DbManager.getInstance(this).updateWordAnswer(word);
+        moveToNextWord();
+    }
+
+    @Override
+    public void onLeftArrowPressed() {
+        if (mViewPager.getCurrentItem() > 0) {
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+        }
+    }
+
+    @Override
+    public void onRightArrowPressed() {
         moveToNextWord();
     }
 }

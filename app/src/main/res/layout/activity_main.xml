@@ -24,12 +24,14 @@
             android:layout_marginRight="5dp"
             android:scaleType="centerInside"
             android:layout_weight="0.5"
+            android:soundEffectsEnabled="false"
             android:src="@drawable/wrong" />
 
         <ImageButton
             android:id="@+id/btn_right"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:soundEffectsEnabled="false"
             android:layout_marginLeft="5dp"
             android:src="@drawable/right"
             android:scaleType="centerInside"
