@@ -52,14 +52,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:src="@drawable/logo_asttlr"
+                android:src="@drawable/logo_ubb"
                 android:layout_margin="5dp" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:src="@drawable/logo_cochlear"
+                android:src="@drawable/logo_pps"
                 android:layout_margin="5dp" />
         </LinearLayout>
 
@@ -74,14 +74,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:src="@drawable/logo_ubb"
+                android:src="@drawable/logo_asttlr"
                 android:layout_margin="5dp" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:src="@drawable/logo_pps"
+                android:src="@drawable/logo_cochlear"
                 android:layout_margin="5dp" />
         </LinearLayout>
     </LinearLayout>

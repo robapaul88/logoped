@@ -18,6 +18,7 @@ import com.android.logoped.database.DbManager;
 import com.android.logoped.interfaces.OnAnswerSelectedListener;
 import com.android.logoped.model.Word;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity implements OnAnswerSelectedListener, View.OnClickListener, WrongAnswerDialogFragment.WrongAnswerTypeListener, WordImageFragment.OnArrowPressListener {
@@ -43,6 +44,7 @@ public class MainActivity extends ActionBarActivity implements OnAnswerSelectedL
 
     private void loadSavedWords() {
         mWords = DbManager.getInstance(this).getAllWords();
+        Collections.shuffle(mWords);
         Log.d(TAG, "Words from DB:\n" + mWords);
     }
 

@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -21,8 +22,10 @@ public class AboutDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
-        builder.setView(inflater.inflate(R.layout.about_fragment, null))
+        View v = inflater.inflate(R.layout.about_fragment, null);
+        WebView wv = (WebView) v.findViewById(R.id.content);
+        wv.loadUrl("file:///android_asset/description.html");
+        builder.setView(v)
                 // Add action buttons
                 .setPositiveButton(R.string.lbl_inchidere, new DialogInterface.OnClickListener() {
                     @Override
