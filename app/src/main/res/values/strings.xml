@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Paşi prin lumea sunetelor!</string>
+    <string name="app_label">PPLS</string>
     <string name="action_settings">Oprire test</string>
     <string name="lbl_wrong">Gresit</string>
     <string name="lbl_right">Corect</string>
@@ -10,9 +11,9 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="action_send_report">Trimite raport pe email</string>
-
     <string name="error_invalid_email">Adresa de email invalida</string>
     <string name="error_field_required">Camp incorect</string>
+
     <string name="lbl_choose_error_type_title">Alegeti tipul greselii:</string>
     <string name="lbl_are_you_sure_you_want_to_exit">Sunteti sigur ca vreti sa opriti testul?</string>
     <string name="lbl_are_you_sure_close_app">Sunteti sigur ca vreti sa opriti aplicatia?</string>
