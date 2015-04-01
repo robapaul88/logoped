@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.logoped.database.DbInitializer;
@@ -40,6 +40,7 @@ public class InitialActivity extends ActionBarActivity implements View.OnClickLi
         findViewById(R.id.btn_start_test).setOnClickListener(this);
         findViewById(R.id.btn_close_app).setOnClickListener(this);
         findViewById(R.id.btn_about).setOnClickListener(this);
+        findViewById(R.id.logo_cochlear).setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +65,10 @@ public class InitialActivity extends ActionBarActivity implements View.OnClickLi
                 break;
             case R.id.btn_about:
                 openAboutDialog();
+                break;
+            case R.id.logo_cochlear:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cochlear.com/wps/wcm/connect/intl/home/home"));
+                startActivity(browserIntent);
                 break;
         }
     }
