@@ -8,8 +8,6 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -474,7 +472,7 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
     }
 
     public void sendEmail() {
-        if (isInternetConnected()) {
+        if (ValidationUtils.isInternetConnected(this)) {
             Intent msg = new Intent(Intent.ACTION_SEND);
             msg.putExtra(Intent.EXTRA_EMAIL, new String[]{mEmailView.getText().toString()});
             String str = mNumePacient.getText().toString();
@@ -489,14 +487,6 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         }
     }
 
-    private boolean isInternetConnected() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-    }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {

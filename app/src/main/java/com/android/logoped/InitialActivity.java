@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.android.logoped.database.DbInitializer;
 import com.android.logoped.database.DbManager;
 import com.android.logoped.model.Word;
+import com.android.logoped.utils.ValidationUtils;
 
 import java.util.List;
 
@@ -41,6 +42,10 @@ public class InitialActivity extends ActionBarActivity implements View.OnClickLi
         findViewById(R.id.btn_close_app).setOnClickListener(this);
         findViewById(R.id.btn_about).setOnClickListener(this);
         findViewById(R.id.logo_cochlear).setOnClickListener(this);
+        findViewById(R.id.logo_asttlr).setOnClickListener(this);
+        findViewById(R.id.logo_pps).setOnClickListener(this);
+        findViewById(R.id.logo_ubb).setOnClickListener(this);
+        findViewById(R.id.logo_webs4all).setOnClickListener(this);
     }
 
     @Override
@@ -67,10 +72,31 @@ public class InitialActivity extends ActionBarActivity implements View.OnClickLi
                 openAboutDialog();
                 break;
             case R.id.logo_cochlear:
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cochlear.com/wps/wcm/connect/intl/home/home"));
-                startActivity(browserIntent);
+                startBrowser("http://www.cochlear.com/wps/wcm/connect/intl/home/home");
+                break;
+            case R.id.logo_asttlr:
+                startBrowser("http://www.asttlr.ro/");
+                break;
+            case R.id.logo_pps:
+                startBrowser("http://psihoped.psiedu.ubbcluj.ro/");
+                break;
+            case R.id.logo_ubb:
+                startBrowser("http://www.ubbcluj.ro/ro/");
+                break;
+            case R.id.logo_webs4all:
+                startBrowser("http://www.WebS4All.Ro");
                 break;
         }
+    }
+
+    private void startBrowser(String url) {
+        if (ValidationUtils.isInternetConnected(this)) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        } else {
+            Toast.makeText(this, getString(R.string.lbl_no_internet_connection), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void openAboutDialog() {
