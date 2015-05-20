@@ -7,7 +7,7 @@ import de.greenrobot.daogenerator.Schema;
 public class MyDaoGenerator {
 
     public static void main(String args[]) throws Exception {
-        Schema schema = new Schema(2, "com.android.logoped.model");
+        Schema schema = new Schema(2, "com.pps.ppls.model");
         Entity box = schema.addEntity("Word");
         box.addIdProperty();
         box.addStringProperty("name");

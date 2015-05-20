@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Logoped.iml" filepath="$PROJECT_DIR$/Logoped.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyDaoGenerator/MyDaoGenerator.iml" filepath="$PROJECT_DIR$/MyDaoGenerator/MyDaoGenerator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PPLS.iml" filepath="$PROJECT_DIR$/PPLS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/ppls.iml" filepath="$PROJECT_DIR$/app/ppls.iml" />
     </modules>
   </component>
 </project>
-
