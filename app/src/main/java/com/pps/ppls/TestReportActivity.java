@@ -57,12 +57,12 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         setContentView(R.layout.test_report_layout);
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
 
-        mNumePacient = (EditText) findViewById(R.id.pacient);
+        mNumePacient = findViewById(R.id.pacient);
 
-        Button sendReportBtn = (Button) findViewById(R.id.send_email_btn);
+        Button sendReportBtn = findViewById(R.id.send_email_btn);
         sendReportBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,30 +76,30 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
     }
 
     private void initTextViews() {
-        tv1RaspunsuriCorecte = (TextView) findViewById(R.id.txtReport1raspunsuricorecte);
-        tv2greseliinitiale = (TextView) findViewById(R.id.txtReport2greseliinitiale);
-        tv3greselimediane = (TextView) findViewById(R.id.txtReport3greselimediane);
-        tv4greselifinale = (TextView) findViewById(R.id.txtReport4greselifinale);
-        tv5coclusive = (TextView) findViewById(R.id.txtReport5coclusive);
-        tv6cfrictive = (TextView) findViewById(R.id.txtReport6cfrictive);
-        tv7cafricate = (TextView) findViewById(R.id.txtReport7cafricate);
-        tv8cnazale = (TextView) findViewById(R.id.txtReport8cnazale);
-        tv9csonante = (TextView) findViewById(R.id.txtReport9csonante);
-        tv10cbilabiale = (TextView) findViewById(R.id.txtReport10cbilabiale);
-        tv11clabiodentale = (TextView) findViewById(R.id.txtReport11clabiodentale);
-        tv12capicodentale = (TextView) findViewById(R.id.txtReport12capicodentale);
-        tv13calveolare = (TextView) findViewById(R.id.txtReport13calveolare);
-        tv14cpalatale = (TextView) findViewById(R.id.txtReport14cpalatale);
-        tv15cvelare = (TextView) findViewById(R.id.txtReport15cvelare);
-        tv16claringale = (TextView) findViewById(R.id.txtReport16claringale);
-        tv17vanterioare = (TextView) findViewById(R.id.txtReport17vanterioare);
-        tv18vmediane = (TextView) findViewById(R.id.txtReport18vmediane);
-        tv19vposterioare = (TextView) findViewById(R.id.txtReport19vposterioare);
-        tv20vdeschise = (TextView) findViewById(R.id.txtReport20vdeschise);
-        tv21vsemideschise = (TextView) findViewById(R.id.txtReport21vsemideschise);
-        tv22vinchise = (TextView) findViewById(R.id.txtReport22vinchise);
-        tv23vrotunjite = (TextView) findViewById(R.id.txtReport23vrotunjite);
-        tv24vnerotunjite = (TextView) findViewById(R.id.txtReport24vnerotunjite);
+        tv1RaspunsuriCorecte = findViewById(R.id.txtReport1raspunsuricorecte);
+        tv2greseliinitiale = findViewById(R.id.txtReport2greseliinitiale);
+        tv3greselimediane = findViewById(R.id.txtReport3greselimediane);
+        tv4greselifinale = findViewById(R.id.txtReport4greselifinale);
+        tv5coclusive = findViewById(R.id.txtReport5coclusive);
+        tv6cfrictive = findViewById(R.id.txtReport6cfrictive);
+        tv7cafricate = findViewById(R.id.txtReport7cafricate);
+        tv8cnazale = findViewById(R.id.txtReport8cnazale);
+        tv9csonante = findViewById(R.id.txtReport9csonante);
+        tv10cbilabiale = findViewById(R.id.txtReport10cbilabiale);
+        tv11clabiodentale = findViewById(R.id.txtReport11clabiodentale);
+        tv12capicodentale = findViewById(R.id.txtReport12capicodentale);
+        tv13calveolare = findViewById(R.id.txtReport13calveolare);
+        tv14cpalatale = findViewById(R.id.txtReport14cpalatale);
+        tv15cvelare = findViewById(R.id.txtReport15cvelare);
+        tv16claringale = findViewById(R.id.txtReport16claringale);
+        tv17vanterioare = findViewById(R.id.txtReport17vanterioare);
+        tv18vmediane = findViewById(R.id.txtReport18vmediane);
+        tv19vposterioare = findViewById(R.id.txtReport19vposterioare);
+        tv20vdeschise = findViewById(R.id.txtReport20vdeschise);
+        tv21vsemideschise = findViewById(R.id.txtReport21vsemideschise);
+        tv22vinchise = findViewById(R.id.txtReport22vinchise);
+        tv23vrotunjite = findViewById(R.id.txtReport23vrotunjite);
+        tv24vnerotunjite = findViewById(R.id.txtReport24vnerotunjite);
     }
 
     private class ComputeResultsTask extends AsyncTask<Void, Void, Void> {

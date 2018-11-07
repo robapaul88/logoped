@@ -11,11 +11,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.pps.ppls.database.DbInitializer;
 import com.pps.ppls.database.DbManager;
 import com.pps.ppls.model.Word;
@@ -23,7 +24,7 @@ import com.pps.ppls.utils.ValidationUtils;
 
 import java.util.List;
 
-public class InitialActivity extends ActionBarActivity implements View.OnClickListener {
+public class InitialActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = InitialActivity.class.getSimpleName();
     private static final String PREF_KEY_LICENCE_DATE = "PREF_KEY_LICENCE_DATE";

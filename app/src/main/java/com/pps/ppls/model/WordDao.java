@@ -27,7 +27,7 @@ public class WordDao extends AbstractDao<Word, Long> {
         public final static Property AudioName = new Property(3, String.class, "audioName", false, "AUDIO_NAME");
         public final static Property Fonem = new Property(4, String.class, "fonem", false, "FONEM");
         public final static Property AnswerType = new Property(5, Integer.class, "answerType", false, "ANSWER_TYPE");
-    };
+    }
 
 
     public WordDao(DaoConfig config) {

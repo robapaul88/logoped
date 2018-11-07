@@ -18,7 +18,7 @@ public class AboutDialogFragment extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.about_fragment, null);
-        WebView wv = (WebView) v.findViewById(R.id.content);
+        WebView wv = v.findViewById(R.id.content);
         wv.loadUrl("file:///android_asset/description.html");
         builder.setView(v)
                 // Add action buttons

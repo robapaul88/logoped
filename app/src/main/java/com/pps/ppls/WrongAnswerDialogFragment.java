@@ -56,7 +56,7 @@ public class WrongAnswerDialogFragment extends DialogFragment implements
                              Bundle savedInstanceState) {
         getDialog().setTitle(getString(R.string.lbl_choose_error_type_title));
         View view = inflater.inflate(R.layout.dialog_fragment, null, false);
-        mylist = (ListView) view.findViewById(R.id.list_view);
+        mylist = view.findViewById(R.id.list_view);
         return view;
     }
 

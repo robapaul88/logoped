@@ -5,7 +5,7 @@ package com.pps.ppls.interfaces;
  */
 public interface OnAnswerSelectedListener {
 
-    public void onWrongAnswerListener();
+    void onWrongAnswerListener();
 
-    public void onRightAnswerListener();
+    void onRightAnswerListener();
 }

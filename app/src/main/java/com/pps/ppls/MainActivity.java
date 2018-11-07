@@ -6,11 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.pps.ppls.database.DbManager;
 import com.pps.ppls.interfaces.OnAnswerSelectedListener;
 import com.pps.ppls.model.Word;
@@ -18,7 +19,7 @@ import com.pps.ppls.model.Word;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity implements OnAnswerSelectedListener, View.OnClickListener, WrongAnswerDialogFragment.WrongAnswerTypeListener, WordImageFragment.OnArrowPressListener {
+public class MainActivity extends AppCompatActivity implements OnAnswerSelectedListener, View.OnClickListener, WrongAnswerDialogFragment.WrongAnswerTypeListener, WordImageFragment.OnArrowPressListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -32,7 +33,7 @@ public class MainActivity extends ActionBarActivity implements OnAnswerSelectedL
 
         loadSavedWords();
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), mWords);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager = findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         findViewById(R.id.btn_wrong).setOnClickListener(this);
         findViewById(R.id.btn_right).setOnClickListener(this);

@@ -28,3 +28,13 @@ proguard/
 
 # Log Files
 *.log
+
+/.idea/codeStyles/Project.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/runConfigurations.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/*

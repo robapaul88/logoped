@@ -26,9 +26,9 @@ import com.pps.ppls.utils.ImageUtils;
 public class WordImageFragment extends Fragment implements View.OnClickListener {
 
     public interface OnArrowPressListener {
-        public void onLeftArrowPressed();
+        void onLeftArrowPressed();
 
-        public void onRightArrowPressed();
+        void onRightArrowPressed();
     }
 
     private static final String EXTRA_WORD_TO_DISPLAY = "EXTRA_WORD_TO_DISPLAY";
@@ -70,11 +70,11 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        mImageView = (ImageView) rootView.findViewById(R.id.imv_image);
+        mImageView = rootView.findViewById(R.id.imv_image);
         mBitmapTask = new BitmapWorkerTask(mImageView);
         if (mDisplayedWord != null) {
             mBitmapTask.execute(ImageUtils.getImageResIdByName(getActivity(), mDisplayedWord.getImageName()));
-            mTextView = (TextView) rootView.findViewById(R.id.word_name_tv);
+            mTextView = rootView.findViewById(R.id.word_name_tv);
             String wordName = mDisplayedWord.getName();
             if (!TextUtils.isEmpty(wordName)) {
                 mTextView.setText(Html.fromHtml(wordName));
