@@ -38,3 +38,5 @@ proguard/
 /.idea/gradle.xml
 /.idea/misc.xml
 /.idea/*
+/.idea/.name
+/.idea/misc.xml

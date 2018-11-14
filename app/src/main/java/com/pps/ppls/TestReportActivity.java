@@ -15,13 +15,13 @@ import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.pps.ppls.database.DbManager;
 import com.pps.ppls.model.Word;
 import com.pps.ppls.utils.ReportUtils;
@@ -29,21 +29,21 @@ import com.pps.ppls.utils.ValidationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Locale;
 
 public class TestReportActivity extends Activity implements LoaderCallbacks<Cursor> {
 
-    private static final String TAG = TestReportActivity.class.getSimpleName();
+    static final String TAG = TestReportActivity.class.getSimpleName();
     private AutoCompleteTextView mEmailView;
     private EditText mNumePacient;
-    private TextView tv1RaspunsuriCorecte, tv2greseliinitiale, tv3greselimediane, tv4greselifinale, tv5coclusive, tv6cfrictive,
+    TextView tv1RaspunsuriCorecte, tv2greseliinitiale, tv3greselimediane, tv4greselifinale, tv5coclusive, tv6cfrictive,
             tv7cafricate, tv8cnazale, tv9csonante, tv10cbilabiale, tv11clabiodentale, tv12capicodentale, tv13calveolare,
             tv14cpalatale, tv15cvelare, tv16claringale, tv17vanterioare, tv18vmediane, tv19vposterioare, tv20vdeschise,
             tv21vsemideschise, tv22vinchise, tv23vrotunjite, tv24vnerotunjite;
-    private StringBuilder mEmailBodyStringBuilder;
-    private String[] mReportData;
+    StringBuilder mEmailBodyStringBuilder;
+    String[] mReportData;
 
-    private int answeredCorrectly, wrongFirstPart, wrongMiddle, wrongEnd, mNbConsoaneAlveolare, mCorectConsoaneAlveolare, mNbConsoaneApicoDentale, mCorectConsoaneApicoDentale, mNbConsoaneBilabiale,
+    int answeredCorrectly, wrongFirstPart, wrongMiddle, wrongEnd, mNbConsoaneAlveolare, mCorectConsoaneAlveolare, mNbConsoaneApicoDentale, mCorectConsoaneApicoDentale, mNbConsoaneBilabiale,
             mNbConsoaneLabiodentale, mCorectConsoaneBilabiale, mCorectConsoaneLabiodentale, mNbConsoaneLaringale, mCorectConsoaneLaringale,
             mNbConsoanePalatale, mCorectConsoanePalatale, mNbConsoaneVelare, mCorectConsoaneVelare, mNbConsoaneAfricate, mCorectConsoaneAfricate,
             mNbConsoaneFricative, mNbConsoaneNazale, mCorectConsoaneNazale, mNbConsoaneOclusive, mCorectConsoaneOclusive, mNbConsoaneSonante,
@@ -63,12 +63,7 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         mNumePacient = findViewById(R.id.pacient);
 
         Button sendReportBtn = findViewById(R.id.send_email_btn);
-        sendReportBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptSendingReport();
-            }
-        });
+        sendReportBtn.setOnClickListener(view -> attemptSendingReport());
 
         initTextViews();
 
@@ -107,7 +102,7 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         private ProgressDialog mProgressDialog;
         private Context mContext;
 
-        private ComputeResultsTask(Context context) {
+        ComputeResultsTask(Context context) {
             this.mContext = context;
         }
 
@@ -300,60 +295,60 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
             float vNerotunjitePercentage = mNbVocaleNerotunjite == 0 ? 0 : (float) mCorectVocaleNerotunjite * 100 / mNbVocaleNerotunjite;
 
             mEmailBodyStringBuilder = new StringBuilder("Raport test:\n\n");
-            mReportData[0] = " " + answeredCorrectly + " / " + answeredSize + " = " + String.format("%.2f", fullPercentage) + "%";
+            mReportData[0] = " " + answeredCorrectly + " / " + answeredSize + " = " + String.format(Locale.getDefault(), "%.2f", fullPercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_raspunsuri_corecte)).append(mReportData[0]).append("\n");
-            mReportData[1] = " " + wrongFirstPart + " / " + answeredSize + " = " + String.format("%.2f", fullAnterioarePercentage) + "%";
+            mReportData[1] = " " + wrongFirstPart + " / " + answeredSize + " = " + String.format(Locale.getDefault(), "%.2f", fullAnterioarePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_sunete_omise)).append(mReportData[1]).append("\n");
-            mReportData[2] = " " + wrongMiddle + " / " + answeredSize + " = " + String.format("%.2f", fullMedianePercentage) + "%";
+            mReportData[2] = " " + wrongMiddle + " / " + answeredSize + " = " + String.format(Locale.getDefault(), "%.2f", fullMedianePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_sunete_distorsionate)).append(mReportData[2]).append("\n");
-            mReportData[3] = " " + wrongEnd + " / " + answeredSize + " = " + String.format("%.2f", fullPosterioarePercentage) + "%";
+            mReportData[3] = " " + wrongEnd + " / " + answeredSize + " = " + String.format(Locale.getDefault(), "%.2f", fullPosterioarePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_sunete_inlocuite)).append(mReportData[3]).append("\n");
             mEmailBodyStringBuilder.append("\n").append(getString(R.string.lbl_consoane)).append("\n").append("\n");
             mEmailBodyStringBuilder.append(getString(R.string.lbl_dupa_mod_producere)).append("\n");
-            mReportData[4] = " " + mCorectConsoaneOclusive + " / " + mNbConsoaneOclusive + " = " + String.format("%.2f", cOclusivePercentage) + "%";
+            mReportData[4] = " " + mCorectConsoaneOclusive + " / " + mNbConsoaneOclusive + " = " + String.format(Locale.getDefault(), "%.2f", cOclusivePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_oclusive)).append(mReportData[4]).append("\n");
-            mReportData[5] = " " + mCorectConsoaneFricative + " / " + mNbConsoaneFricative + " = " + String.format("%.2f", cFricativePercentage) + "%";
+            mReportData[5] = " " + mCorectConsoaneFricative + " / " + mNbConsoaneFricative + " = " + String.format(Locale.getDefault(), "%.2f", cFricativePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_fricative)).append(mReportData[5]).append("\n");
-            mReportData[6] = " " + mCorectConsoaneAfricate + " / " + mNbConsoaneAfricate + " = " + String.format("%.2f", cAfricatePercentage) + "%";
+            mReportData[6] = " " + mCorectConsoaneAfricate + " / " + mNbConsoaneAfricate + " = " + String.format(Locale.getDefault(), "%.2f", cAfricatePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_africate)).append(mReportData[6]).append("\n");
-            mReportData[7] = " " + mCorectConsoaneNazale + " / " + mNbConsoaneNazale + " = " + String.format("%.2f", cNazalePercentage) + "%";
+            mReportData[7] = " " + mCorectConsoaneNazale + " / " + mNbConsoaneNazale + " = " + String.format(Locale.getDefault(), "%.2f", cNazalePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_nazale)).append(mReportData[7]).append("\n");
-            mReportData[8] = " " + mCorectConsoaneSonante + " / " + mNbConsoaneSonante + " = " + String.format("%.2f", cSonantePercentage) + "%";
+            mReportData[8] = " " + mCorectConsoaneSonante + " / " + mNbConsoaneSonante + " = " + String.format(Locale.getDefault(), "%.2f", cSonantePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_sonante)).append(mReportData[8]).append("\n");
-            mReportData[9] = " " + mCorectConsoaneBilabiale + " / " + mNbConsoaneBilabiale + " = " + String.format("%.2f", cBilabialePercentage) + "%";
+            mReportData[9] = " " + mCorectConsoaneBilabiale + " / " + mNbConsoaneBilabiale + " = " + String.format(Locale.getDefault(), "%.2f", cBilabialePercentage) + "%";
             mEmailBodyStringBuilder.append("\n").append(getString(R.string.lbl_dupa_mod_articulare)).append("\n");
             mEmailBodyStringBuilder.append(getString(R.string.lbl_bilabiale)).append(mReportData[9]).append("\n");
-            mReportData[10] = " " + mCorectConsoaneLabiodentale + " / " + mNbConsoaneLabiodentale + " = " + String.format("%.2f", cLabiodentalePercentage) + "%";
+            mReportData[10] = " " + mCorectConsoaneLabiodentale + " / " + mNbConsoaneLabiodentale + " = " + String.format(Locale.getDefault(), "%.2f", cLabiodentalePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_labiodentale)).append(mReportData[10]).append("\n");
-            mReportData[11] = " " + mCorectConsoaneApicoDentale + " / " + mNbConsoaneApicoDentale + " = " + String.format("%.2f", cApicoDentalePercentage) + "%";
+            mReportData[11] = " " + mCorectConsoaneApicoDentale + " / " + mNbConsoaneApicoDentale + " = " + String.format(Locale.getDefault(), "%.2f", cApicoDentalePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_apicodentale)).append(mReportData[11]).append("\n");
-            mReportData[12] = " " + mCorectConsoaneAlveolare + " / " + mNbConsoaneAlveolare + " = " + String.format("%.2f", cAlveolarePercentage) + "%";
+            mReportData[12] = " " + mCorectConsoaneAlveolare + " / " + mNbConsoaneAlveolare + " = " + String.format(Locale.getDefault(), "%.2f", cAlveolarePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_alveolare)).append(mReportData[12]).append("\n");
-            mReportData[13] = " " + mCorectConsoanePalatale + " / " + mNbConsoanePalatale + " = " + String.format("%.2f", cPalatalePercentage) + "%";
+            mReportData[13] = " " + mCorectConsoanePalatale + " / " + mNbConsoanePalatale + " = " + String.format(Locale.getDefault(), "%.2f", cPalatalePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_palatale)).append(mReportData[13]).append("\n");
-            mReportData[14] = " " + mCorectConsoaneVelare + " / " + mNbConsoaneVelare + " = " + String.format("%.2f", cVelarePercentage) + "%";
+            mReportData[14] = " " + mCorectConsoaneVelare + " / " + mNbConsoaneVelare + " = " + String.format(Locale.getDefault(), "%.2f", cVelarePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_velare)).append(mReportData[14]).append("\n");
-            mReportData[15] = " " + mCorectConsoaneLaringale + " / " + mNbConsoaneLaringale + " = " + String.format("%.2f", cLaringalePercentage) + "%";
+            mReportData[15] = " " + mCorectConsoaneLaringale + " / " + mNbConsoaneLaringale + " = " + String.format(Locale.getDefault(), "%.2f", cLaringalePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_laringale)).append(mReportData[15]).append("\n");
             mEmailBodyStringBuilder.append("\n").append(getString(R.string.lbl_vocale)).append("\n").append("\n");
             mEmailBodyStringBuilder.append(getString(R.string.lbl_dupa_zona_articulare)).append("\n");
-            mReportData[16] = " " + mCorectVocaleAnterioare + " / " + mNbVocaleAnterioare + " = " + String.format("%.2f", vAnterioarePercentage) + "%";
+            mReportData[16] = " " + mCorectVocaleAnterioare + " / " + mNbVocaleAnterioare + " = " + String.format(Locale.getDefault(), "%.2f", vAnterioarePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_anterioare)).append(mReportData[16]).append("\n");
-            mReportData[17] = " " + mCorectVocaleMediane + " / " + mNbVocaleMediane + " = " + String.format("%.2f", vMedianePercentage) + "%";
+            mReportData[17] = " " + mCorectVocaleMediane + " / " + mNbVocaleMediane + " = " + String.format(Locale.getDefault(), "%.2f", vMedianePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_mediane)).append(mReportData[17]).append("\n");
-            mReportData[18] = " " + mCorectVocalePosterioare + " / " + mNbVocalePosterioare + " = " + String.format("%.2f", vPosterioarePercentage) + "%";
+            mReportData[18] = " " + mCorectVocalePosterioare + " / " + mNbVocalePosterioare + " = " + String.format(Locale.getDefault(), "%.2f", vPosterioarePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_posterioare)).append(mReportData[18]).append("\n");
             mEmailBodyStringBuilder.append(getString(R.string.lbl_dupa_grad_deschidere_cavitate_bucala)).append("\n");
-            mReportData[19] = " " + mCorectVocaleDeschise + " / " + mNbVocaleDeschise + " = " + String.format("%.2f", vDeschisePercentage) + "%";
+            mReportData[19] = " " + mCorectVocaleDeschise + " / " + mNbVocaleDeschise + " = " + String.format(Locale.getDefault(), "%.2f", vDeschisePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_deschise)).append(mReportData[19]).append("\n");
-            mReportData[20] = " " + mCorectVocaleSemideschise + " / " + mNbVocaleSemideschise + " = " + String.format("%.2f", vSemideschisePercentage) + "%";
+            mReportData[20] = " " + mCorectVocaleSemideschise + " / " + mNbVocaleSemideschise + " = " + String.format(Locale.getDefault(), "%.2f", vSemideschisePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_semideschise)).append(mReportData[20]).append("\n");
-            mReportData[21] = " " + mCorectVocaleInchise + " / " + mNbVocaleInchise + " = " + String.format("%.2f", vInchisePercentage) + "%";
+            mReportData[21] = " " + mCorectVocaleInchise + " / " + mNbVocaleInchise + " = " + String.format(Locale.getDefault(), "%.2f", vInchisePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_inchise)).append(mReportData[21]).append("\n");
             mEmailBodyStringBuilder.append(getString(R.string.lbl_dupa_rotunjire_buze)).append("\n");
-            mReportData[22] = " " + mCorectVocaleRotunjite + " / " + mNbVocaleRotunjite + " = " + String.format("%.2f", vRotunjitePercentage) + "%";
+            mReportData[22] = " " + mCorectVocaleRotunjite + " / " + mNbVocaleRotunjite + " = " + String.format(Locale.getDefault(), "%.2f", vRotunjitePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_rotunjite)).append(mReportData[22]).append("\n");
-            mReportData[23] = " " + mCorectVocaleNerotunjite + " / " + mNbVocaleNerotunjite + " = " + String.format("%.2f", vNerotunjitePercentage) + "%";
+            mReportData[23] = " " + mCorectVocaleNerotunjite + " / " + mNbVocaleNerotunjite + " = " + String.format(Locale.getDefault(), "%.2f", vNerotunjitePercentage) + "%";
             mEmailBodyStringBuilder.append(getString(R.string.lbl_nerotunjite)).append(mReportData[23]).append("\n");
 
             return null;
@@ -393,7 +388,7 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         }
     }
 
-    private void resetNumbers() {
+    void resetNumbers() {
         answeredCorrectly = 0;
         wrongFirstPart = 0;
         wrongMiddle = 0;

@@ -12,7 +12,7 @@ public class DbInitializer {
     private static List<Word> wordsList;
 
     static {
-        wordsList = new ArrayList<Word>();
+        wordsList = new ArrayList<>();
 
         //a
         wordsList.add(new Word("<u>a</u>pă", "apa.png", "apa", "a", -2));

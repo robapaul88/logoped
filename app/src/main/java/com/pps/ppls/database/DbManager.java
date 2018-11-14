@@ -10,8 +10,6 @@ import java.util.List;
  * Created by paul on 16/02/15.
  */
 public class DbManager {
-    private static final String TAG = DbManager.class.getSimpleName();
-
     private static DbManager _instance;
     private Context mContext;
 

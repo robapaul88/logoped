@@ -1,11 +1,12 @@
 package com.pps.ppls;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.pps.ppls.model.Word;
 import com.pps.ppls.utils.AudioUtils;
 import com.pps.ppls.utils.BitmapWorkerTask;
@@ -35,9 +37,7 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     private static final String TAG = WordImageFragment.class.getSimpleName();
 
     private ImageView mImageView;
-    private TextView mTextView;
     private Word mDisplayedWord;
-    private BitmapWorkerTask mBitmapTask;
     private OnArrowPressListener mListener;
 
     public static WordImageFragment newInstance(Word word) {
@@ -51,10 +51,9 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     public WordImageFragment() {
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mListener = (OnArrowPressListener) activity;
+    @Override public void onAttach(Context context) {
+        super.onAttach(context);
+        mListener = (OnArrowPressListener) context;
     }
 
     @Override
@@ -67,17 +66,17 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         mImageView = rootView.findViewById(R.id.imv_image);
-        mBitmapTask = new BitmapWorkerTask(mImageView);
+        BitmapWorkerTask bitmapWorkerTask = new BitmapWorkerTask(mImageView);
         if (mDisplayedWord != null) {
-            mBitmapTask.execute(ImageUtils.getImageResIdByName(getActivity(), mDisplayedWord.getImageName()));
-            mTextView = rootView.findViewById(R.id.word_name_tv);
+            bitmapWorkerTask.execute(ImageUtils.getImageResIdByName(getActivity(), mDisplayedWord.getImageName()));
+            TextView textView = rootView.findViewById(R.id.word_name_tv);
             String wordName = mDisplayedWord.getName();
             if (!TextUtils.isEmpty(wordName)) {
-                mTextView.setText(Html.fromHtml(wordName));
+                textView.setText(Html.fromHtml(wordName));
             }
         }
         rootView.findViewById(R.id.main_frame).setOnClickListener(this);
@@ -90,7 +89,7 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
     public void onDestroyView() {
         super.onDestroyView();
         Drawable drawable = mImageView.getDrawable();
-        if (drawable != null && drawable instanceof BitmapDrawable) {
+        if (drawable instanceof BitmapDrawable) {
             Bitmap bmp = ((BitmapDrawable) drawable).getBitmap();
             if (bmp != null && !bmp.isRecycled()) {
                 bmp.recycle();
@@ -106,13 +105,7 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
                 int soundId = AudioUtils.getRawResIdByName(getActivity(), mDisplayedWord.getAudioName());
                 if (soundId != 0) {
                     final MediaPlayer mp = MediaPlayer.create(getActivity(), soundId);
-                    mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mp.release();
-                        }
-
-                    });
+                    mp.setOnCompletionListener(MediaPlayer::release);
                     mp.start();
                 }
                 break;

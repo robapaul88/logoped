@@ -25,8 +25,7 @@ public class ImageUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Bitmap bitmap = BitmapFactory.decodeStream(istr);
-        return bitmap;
+        return BitmapFactory.decodeStream(istr);
     }
 
     public static int getImageResIdByName(Context context, String name) {
@@ -37,7 +36,7 @@ public class ImageUtils {
         return 0;
     }
 
-    public static int calculateInSampleSize(
+    private static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;

@@ -32,8 +32,8 @@ public class WrongAnswerDialogFragment extends DialogFragment implements
             this.mMessage = message;
         }
 
-        private static String[] getMessagesArray() {
-            final List<String> list = new ArrayList<String>();
+        static String[] getMessagesArray() {
+            final List<String> list = new ArrayList<>();
             for (WordPronunciationError error : values()) {
                 list.add(error.mMessage);
             }
@@ -65,7 +65,7 @@ public class WrongAnswerDialogFragment extends DialogFragment implements
 
         super.onActivityCreated(savedInstanceState);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, WordPronunciationError.getMessagesArray());
 
         mylist.setAdapter(adapter);

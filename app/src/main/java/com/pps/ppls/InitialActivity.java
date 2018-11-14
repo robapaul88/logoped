@@ -1,10 +1,9 @@
 package com.pps.ppls;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -22,6 +21,7 @@ import com.pps.ppls.database.DbManager;
 import com.pps.ppls.model.Word;
 import com.pps.ppls.utils.ValidationUtils;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class InitialActivity extends AppCompatActivity implements View.OnClickListener {
@@ -61,12 +61,11 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.btn_close_app:
                 new AlertDialog.Builder(this)
-                        .setMessage(getString(R.string.lbl_are_you_sure_close_app)).setPositiveButton(getString(R.string.lbl_yes), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                }).setNegativeButton(getString(R.string.lbl_no), null).create().show();
+                        .setMessage(getString(R.string.lbl_are_you_sure_close_app))
+                        .setPositiveButton(getString(R.string.lbl_yes), (dialog, which) -> finish())
+                        .setNegativeButton(getString(R.string.lbl_no), null)
+                        .create()
+                        .show();
                 break;
             case R.id.btn_about:
                 openAboutDialog();
@@ -114,45 +113,35 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         }
         if (now > expiry) {
             Toast.makeText(this, "Acest demo ruleaza doar pentru o ora!", Toast.LENGTH_LONG).show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            finish();
-                        }
-                    });
-                }
-            }, 5000);
+            new Handler().postDelayed(() -> runOnUiThread(this::finish), 5000);
             return false;
         }
         return true;
     }
 
-    private class StartTestAsyncTask extends AsyncTask<Void, Void, Boolean> {
+    private static class StartTestAsyncTask extends AsyncTask<Void, Void, Boolean> {
 
         private ProgressDialog mProgressDialog;
-        private Context mContext;
+        private WeakReference<Activity> activityRef;
 
-        private StartTestAsyncTask(Context context) {
-            this.mContext = context;
+        StartTestAsyncTask(Activity context) {
+            this.activityRef = new WeakReference<>(context);
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mProgressDialog = ProgressDialog.show(mContext, "Va rugam asteptati!",
+            mProgressDialog = ProgressDialog.show(activityRef.get(), "Va rugam asteptati!",
                     "Initializare date ...", true);
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            if (PreferenceManager.getDefaultSharedPreferences(InitialActivity.this).getBoolean(PREF_KEY_SHOULD_INIT_DB, true)) {
+            if (PreferenceManager.getDefaultSharedPreferences(activityRef.get()).getBoolean(PREF_KEY_SHOULD_INIT_DB, true)) {
                 List<Word> mWords = DbInitializer.getWordsList();
                 Log.d(TAG, "Words to be inserted:\n" + mWords);
-                if (DbManager.getInstance(InitialActivity.this).insertWords(mWords)) {
-                    PreferenceManager.getDefaultSharedPreferences(InitialActivity.this).edit().putBoolean(PREF_KEY_SHOULD_INIT_DB, false).apply();
+                if (DbManager.getInstance(activityRef.get()).insertWords(mWords)) {
+                    PreferenceManager.getDefaultSharedPreferences(activityRef.get()).edit().putBoolean(PREF_KEY_SHOULD_INIT_DB, false).apply();
                     Log.d(TAG, "DB Initialized!");
                     return true;
                 } else {
@@ -160,7 +149,7 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
                     return false;
                 }
             } else {
-                return DbManager.getInstance(mContext).resetSavedAnswers();
+                return DbManager.getInstance(activityRef.get()).resetSavedAnswers();
             }
         }
 
@@ -170,8 +159,10 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
             if (mProgressDialog != null && mProgressDialog.isShowing()) {
                 mProgressDialog.dismiss();
             }
-            finish();
-            startActivity(new Intent(InitialActivity.this, MainActivity.class));
+            if (activityRef.get() != null) {
+                activityRef.get().finish();
+                activityRef.get().startActivity(new Intent(activityRef.get(), MainActivity.class));
+            }
         }
     }
 }
