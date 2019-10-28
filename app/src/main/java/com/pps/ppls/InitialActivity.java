@@ -8,13 +8,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.pps.ppls.database.DbInitializer;
 import com.pps.ppls.database.DbManager;
@@ -27,7 +26,6 @@ import java.util.List;
 public class InitialActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = InitialActivity.class.getSimpleName();
-    private static final String PREF_KEY_LICENCE_DATE = "PREF_KEY_LICENCE_DATE";
     private static final String PREF_KEY_SHOULD_INIT_DB = "PREF_KEY_SHOULD_INIT_DB";
     private StartTestAsyncTask mResetAnswersTask;
 
@@ -35,8 +33,6 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_layout);
-
-        //makeTheLicenceCheck();
 
         findViewById(R.id.btn_start_test).setOnClickListener(this);
         findViewById(R.id.btn_close_app).setOnClickListener(this);
@@ -102,21 +98,6 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         FragmentManager manager = getFragmentManager();
         AboutDialogFragment dialog = new AboutDialogFragment();
         dialog.show(manager, AboutDialogFragment.class.getSimpleName());
-    }
-
-    private boolean makeTheLicenceCheck() {
-        //only allow the app to run for one hour after it was first started
-        long now = System.currentTimeMillis();
-        long expiry = PreferenceManager.getDefaultSharedPreferences(this).getLong(PREF_KEY_LICENCE_DATE, 0);
-        if (expiry == 0) {
-            expiry = now + DateUtils.HOUR_IN_MILLIS;
-        }
-        if (now > expiry) {
-            Toast.makeText(this, "Acest demo ruleaza doar pentru o ora!", Toast.LENGTH_LONG).show();
-            new Handler().postDelayed(() -> runOnUiThread(this::finish), 5000);
-            return false;
-        }
-        return true;
     }
 
     private static class StartTestAsyncTask extends AsyncTask<Void, Void, Boolean> {

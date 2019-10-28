@@ -6,8 +6,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.pps.ppls.model.Word;
 import com.pps.ppls.utils.AudioUtils;
@@ -46,9 +47,6 @@ public class WordImageFragment extends Fragment implements View.OnClickListener 
         args.putParcelable(EXTRA_WORD_TO_DISPLAY, word);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public WordImageFragment() {
     }
 
     @Override public void onAttach(Context context) {

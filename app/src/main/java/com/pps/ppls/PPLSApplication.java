@@ -29,5 +29,4 @@ public class PPLSApplication extends Application {
     public DaoSession getDaoSession() {
         return daoSession;
     }
-
 }

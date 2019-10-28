@@ -1,7 +1,6 @@
 package com.pps.ppls;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,6 @@ public class WrongAnswerDialogFragment extends DialogFragment implements
             }
             return list.toArray(new String[values().length]);
         }
-
     }
 
     private ListView mylist;
@@ -55,23 +55,17 @@ public class WrongAnswerDialogFragment extends DialogFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         getDialog().setTitle(getString(R.string.lbl_choose_error_type_title));
-        View view = inflater.inflate(R.layout.dialog_fragment, null, false);
+        View view = inflater.inflate(R.layout.dialog_fragment, container, false);
         mylist = view.findViewById(R.id.list_view);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-
         super.onActivityCreated(savedInstanceState);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, WordPronunciationError.getMessagesArray());
-
-        mylist.setAdapter(adapter);
-
+        mylist.setAdapter(new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, WordPronunciationError.getMessagesArray()));
         mylist.setOnItemClickListener(this);
-
     }
 
     @Override

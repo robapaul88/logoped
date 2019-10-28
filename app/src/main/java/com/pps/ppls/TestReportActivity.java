@@ -1,41 +1,32 @@
 package com.pps.ppls;
 
-import android.app.Activity;
-import android.app.LoaderManager.LoaderCallbacks;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.pps.ppls.database.DbManager;
 import com.pps.ppls.model.Word;
 import com.pps.ppls.utils.ReportUtils;
 import com.pps.ppls.utils.ValidationUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class TestReportActivity extends Activity implements LoaderCallbacks<Cursor> {
+public class TestReportActivity extends AppCompatActivity {
 
     static final String TAG = TestReportActivity.class.getSimpleName();
-    private AutoCompleteTextView mEmailView;
-    private EditText mNumePacient;
+    private EditText mEmailView, mNumePacient;
     TextView tv1RaspunsuriCorecte, tv2greseliinitiale, tv3greselimediane, tv4greselifinale, tv5coclusive, tv6cfrictive,
             tv7cafricate, tv8cnazale, tv9csonante, tv10cbilabiale, tv11clabiodentale, tv12capicodentale, tv13calveolare,
             tv14cpalatale, tv15cvelare, tv16claringale, tv17vanterioare, tv18vmediane, tv19vposterioare, tv20vdeschise,
@@ -58,7 +49,6 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
 
         // Set up the login form.
         mEmailView = findViewById(R.id.email);
-        populateAutoComplete();
 
         mNumePacient = findViewById(R.id.pacient);
 
@@ -435,11 +425,6 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         mCorectConsoaneFricative = 0;
     }
 
-
-    private void populateAutoComplete() {
-        getLoaderManager().initLoader(0, null, this);
-    }
-
     public void attemptSendingReport() {
         mEmailView.setError(null);
 
@@ -479,53 +464,6 @@ public class TestReportActivity extends Activity implements LoaderCallbacks<Curs
         } else {
             Toast.makeText(this, getString(R.string.lbl_no_internet_connection), Toast.LENGTH_SHORT).show();
         }
-    }
-
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-    }
-
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-    }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(TestReportActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
     }
 }
 

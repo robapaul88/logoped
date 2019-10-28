@@ -3,11 +3,11 @@ package com.pps.ppls
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.pps.ppls.database.DbManager
 import com.pps.ppls.interfaces.OnAnswerSelectedListener
 import com.pps.ppls.model.Word
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), OnAnswerSelectedListener, WrongAnswerD
     }
 
     override fun onWrongAnswerListener() {
-        WrongAnswerDialogFragment().show(fragmentManager, WrongAnswerDialogFragment::class.java.simpleName)
+        WrongAnswerDialogFragment().show(supportFragmentManager, WrongAnswerDialogFragment::class.java.simpleName)
     }
 
     override fun onRightAnswerListener() {
