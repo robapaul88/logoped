@@ -6,7 +6,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.android.logoped"
+        applicationId "com.pps.ppls"
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 2
@@ -37,7 +37,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'de.greenrobot:greendao:2.1.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61'
 }
 repositories {
     mavenCentral()
